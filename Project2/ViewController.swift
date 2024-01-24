@@ -11,11 +11,13 @@ class ViewController: UIViewController {
     @IBOutlet var button1: UIButton!
     @IBOutlet var button2: UIButton!
     @IBOutlet var button3: UIButton!
+    @IBOutlet var buttonScore: UIBarButtonItem!
     
     var countries = [String]()
     var score = 0
     var correctAnswer = 0
     var questionsAnswered = 0
+    var countriesAsked = [String]()
     
     
     override func viewDidLoad() {
@@ -30,7 +32,16 @@ class ViewController: UIViewController {
         button2.layer.borderColor = UIColor.lightGray.cgColor
         button3.layer.borderColor = UIColor.lightGray.cgColor
         askQuestion()
+        buttonScore = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(showScore))
+        
+
     }
+    @IBAction func showScore(_ sender: UIBarButtonItem){
+        let scoreShown = UIAlertController(title: "Score:", message: "\(score)", preferredStyle: .alert)
+        scoreShown.addAction(UIAlertAction(title: "Done", style: .default))
+        present(scoreShown, animated: true)
+    }
+   
     func askQuestion(action: UIAlertAction! = nil){
         if (questionsAnswered == 10) {
             let finalAlert = UIAlertController(title: "Score: \(score)", message: "You have answered 10 questions.", preferredStyle: .alert)
@@ -38,6 +49,7 @@ class ViewController: UIViewController {
             present(finalAlert, animated: true)
             score = 0
             questionsAnswered = 0
+            countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
             askQuestion()
         }else{
             countries.shuffle()
@@ -45,7 +57,8 @@ class ViewController: UIViewController {
             button1.setImage(UIImage(named: countries[0]), for: .normal)
             button2.setImage(UIImage(named: countries[1]), for: .normal)
             button3.setImage(UIImage(named: countries[2]), for: .normal)
-            title = "Score: \(score)     " + countries[correctAnswer].uppercased()
+            title = "\(countries[correctAnswer].uppercased())"
+            countries.remove(at: correctAnswer)
         }
 
     }

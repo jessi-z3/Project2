@@ -52,11 +52,27 @@
                             <constraint firstItem="ow6-YN-uVm" firstAttribute="centerX" secondItem="IkB-3z-035" secondAttribute="centerX" id="tKN-Bd-HU2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Vj4-rc-qLA"/>
+                    <navigationItem key="navigationItem" id="Vj4-rc-qLA">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="bek-Gw-SYu">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="xrN-ya-Gcz">
+                                <rect key="frame" x="290" y="5" width="87" height="34.333333333333336"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="trophy.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="showScore:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TxF-4u-Qby"/>
+                                </connections>
+                            </button>
+                            <connections>
+                                <action selector="showScore:" destination="BYZ-38-t0r" id="BST-5d-yl5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="button1" destination="0ay-Jr-Ee6" id="NYL-vg-yIM"/>
                         <outlet property="button2" destination="IkB-3z-035" id="9iu-nn-esz"/>
                         <outlet property="button3" destination="ow6-YN-uVm" id="7Jo-ec-Lwo"/>
+                        <outlet property="buttonScore" destination="bek-Gw-SYu" id="WAU-c2-5V2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -83,6 +99,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="trophy.fill" catalog="system" width="128" height="128"/>
         <image name="us" width="200" height="100"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
